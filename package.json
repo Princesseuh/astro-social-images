@@ -1,0 +1,32 @@
+{
+  "name": "astro-social-images",
+  "version": "0.0.1",
+  "description": "Social images generator for Astro",
+  "main": "index.js",
+  "types": "dist/main.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Princesseuh/astro-social-images.git"
+  },
+  "keywords": [
+    "astro",
+    "jamstack",
+    "seo",
+    "social",
+    "static",
+    "svg"
+  ],
+  "author": "Princesseuh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Princesseuh/astro-social-images/issues"
+  },
+  "homepage": "https://github.com/Princesseuh/astro-social-images#readme",
+  "dependencies": {
+    "base64url": "^3.0.1",
+    "sharp": "^0.29.1"
+  }
+}

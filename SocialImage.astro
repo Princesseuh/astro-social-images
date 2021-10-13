@@ -1,0 +1,13 @@
+---
+import { generateImage } from "./dist/main.js"
+
+const { getURL, options, globalOptions } = Astro.props
+const { url } = Astro.request
+let imageURL = generateImage(url, options, globalOptions)
+imageURL = imageURL.replace("public/", "/")
+---
+
+{getURL && imageURL}
+{!getURL && (
+  <meta property="og:image" content="{imageURL}">
+)}
