@@ -1,28 +1,28 @@
 interface Config {
-  images?: Image[];
-  texts?: Text[];
-  style?: string;
-  backgroundColor?: string;
-  customSVG?: string;
+  images?: Image[]
+  texts?: Text[]
+  style?: string
+  backgroundColor?: string
+  customSVG?: string
 }
 
 interface Image {
-  url: string;
+  url: string
   attributes: {
-    [attrName: string]: unknown;
-  };
+    [attrName: string]: unknown
+  }
 }
 
 interface Text {
-  content: string;
+  content: string
   attributes: {
-    [attrName: string]: string;
-  };
+    [attrName: string]: string
+  }
 }
 
 interface GlobalConfig {
-  outputDir?: string;
-  hashLength?: number;
+  outputDir?: string
+  hashLength?: number
 }
 
-export {Config, Image, Text, GlobalConfig}
+export { Config, Image, Text, GlobalConfig }

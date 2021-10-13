@@ -1,0 +1,6 @@
+{
+    "cSpell.words": ["Astro"],
+    "prettier.documentSelectors": [
+        "**/*.astro"
+    ],
+}

@@ -1,10 +1,10 @@
 ---
-import { generateImage } from "./dist/main.js"
+  import { generateImage } from "./dist/main.js"
 
-const { getURL, options, globalOptions } = Astro.props
-const { url } = Astro.request
-let imageURL = generateImage(url, options, globalOptions)
-imageURL = imageURL.replace("public/", "/")
+  const { getURL, options, globalOptions } = Astro.props
+  const { url } = Astro.request
+  let imageURL = generateImage(url, options, globalOptions)
+  imageURL = imageURL.replace("public/", "/")
 ---
 
 {getURL && imageURL}
