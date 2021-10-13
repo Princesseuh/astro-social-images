@@ -12,6 +12,7 @@ import type { Config, GlobalConfig } from "./types"
 
 const defaultConfig: Config = {
   texts: [],
+  images: [],
 }
 
 const defaultGlobalConfig: GlobalConfig = {
@@ -53,9 +54,9 @@ function generateImage(url: URL, options: Config = {}, globalOptions: GlobalConf
       ${CSSStyles}
     </defs>
 
-    ${options.customSVG || ""}
-
     ${backgroundColor}
+
+    ${options.customSVG || ""}
 
     <g>
       ${textList}
