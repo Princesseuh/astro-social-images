@@ -1,38 +1,16 @@
 // We can't import sharp normally otherwise Rollup, Snowpack, everyone will panic
 import { createRequire } from "module"
-const cjs = createRequire(import.meta.url)
+import { resolve } from "path";
+
+const cjs = createRequire(
+  resolve("node_modules", "astro-social-images", "dist", "main.js")
+);
 const sharp = cjs("sharp")
 
 import { createHash } from "crypto"
 import base64url from "base64url"
 import { existsSync } from "fs"
-
-interface Config {
-  images?: Image[]
-  texts?: Text[]
-  style?: string
-  backgroundColor?: string
-  customSVG?: string
-}
-
-interface Image {
-  url: string
-  attributes: {
-    [attrName: string]: unknown
-  }
-}
-
-interface Text {
-  content: string
-  attributes: {
-    [attrName: string]: string
-  }
-}
-
-interface GlobalConfig {
-  outputDir?: string
-  hashLength?: number
-}
+import type { Config, GlobalConfig } from './types'
 
 const defaultConfig: Config = {
   texts: [],
@@ -47,14 +25,12 @@ function generateImage(url: URL, options: Config = {}, globalOptions: GlobalConf
   options = { ...defaultConfig, ...options }
   globalOptions = { ...defaultGlobalConfig, ...globalOptions }
 
-  const hash = getHash(url, options, globalOptions)
+  const hash = getHash(options, globalOptions)
 
   // If the image already exists, let's bail out
-  /*   if (existsSync(`${globalOptions.outputDir}/${hash}.png`)) {
+  if (existsSync(`${globalOptions.outputDir}/${hash}.png`)) {
     return `${globalOptions.outputDir}/${hash}.png`
-  } */
-
-  console.table(options)
+  }
 
   const textList = options.texts
     .map((text) => {
@@ -87,15 +63,11 @@ function generateImage(url: URL, options: Config = {}, globalOptions: GlobalConf
     </g>
 	</svg>`
 
-  console.log(template)
-
   const svgBuffer = Buffer.from(template)
 
   const imageList = options.images.map((image) => {
     return { input: image.url, ...image.attributes }
   })
-
-  console.table(imageList)
 
   const result = sharp(svgBuffer)
     .resize(1200, 630)
@@ -109,7 +81,7 @@ function generateImage(url: URL, options: Config = {}, globalOptions: GlobalConf
   return result.options.fileOut
 }
 
-function getHash(url: URL, options: Config, globalOptions: GlobalConfig) {
+function getHash(options: Config, globalOptions: GlobalConfig) {
   const hash = createHash("sha256")
 
   hash.update(JSON.stringify(options))

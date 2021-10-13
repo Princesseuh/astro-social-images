@@ -3,9 +3,11 @@
   "version": "0.0.1",
   "description": "Social images generator for Astro",
   "main": "index.js",
-  "types": "dist/main.d.ts",
+  "types": "dist/types.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "dev": "tsc --dev",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -26,7 +28,11 @@
   },
   "homepage": "https://github.com/Princesseuh/astro-social-images#readme",
   "dependencies": {
+    "@types/node": "^16.10.5",
     "base64url": "^3.0.1",
     "sharp": "^0.29.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4"
   }
 }
