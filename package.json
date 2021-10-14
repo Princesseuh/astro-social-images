@@ -29,11 +29,11 @@
   },
   "homepage": "https://github.com/Princesseuh/astro-social-images#readme",
   "dependencies": {
-    "@types/node": "^16.10.5",
     "base64url": "^3.0.1",
     "sharp": "^0.29.1"
   },
   "devDependencies": {
+    "@types/node": "^16.10.5",
     "@types/eslint": "^7.28.1",
     "@types/prettier": "^2.4.1",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
