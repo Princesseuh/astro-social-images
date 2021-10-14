@@ -1,13 +1,18 @@
 ---
   import { generateImage } from "./dist/main.js"
 
-  const { getURL, options, globalOptions } = Astro.props
-  const { url } = Astro.request
-  let imageURL = generateImage(url, options, globalOptions)
+  const { getURL, images, texts, style, backgroundColor, customSVG, globalOptions } = Astro.props
+
+  const options = { images, texts, style, backgroundColor, customSVG }
+
+  let imageURL = generateImage(options, globalOptions)
   imageURL = imageURL.replace("public/", "/")
 ---
 
 {getURL && imageURL}
-{!getURL && (
-  <meta property="og:image" content="{imageURL}">
+{!getURL && (`
+  <meta property="og:image" content="${imageURL}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="${imageURL}">
+  `
 )}
