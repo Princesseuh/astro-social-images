@@ -4,7 +4,7 @@
 
 Add a component to generate Opengraph images to [Astro](https://astro.build/), inspired by [eleventy-plugin-social-images](https://github.com/manustays/eleventy-plugin-generate-social-images).
 
-Unlike other solutions for Astro, it generate a svg that is then converted to a .png file through `sharp`. This mean no headless browser, no third-party service etc.
+Unlike other solutions for Astro, it generates a svg that is then converted to a .png file through `sharp`. This means no headless browser, no third-party service etc.
 
 It's all local which, well, can be good or bad depending on your needs, check out different options and see which one fits your project best!
 
