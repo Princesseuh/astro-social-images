@@ -51,7 +51,7 @@ generateSocialImage({
   backgroundColor: "#28262c",
   texts: [
     {
-      content: "My super title"
+      content: "My super title",
       attributes: { x: "55", y: "105", "font-size": "70px", fill: "#fefffe" }
     }
   ]
