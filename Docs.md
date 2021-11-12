@@ -40,7 +40,11 @@ will create this code: `<text class="red">Hello</text>`
 
 ```astro
 <SocialImage
-  texts={[{ content: "My super title", attributes: { x: "100", y: "100", "font-size": "70px" } }, { content: "My super description", attributes: { x: "100", y: "200", "font-size": "40px" } }]} />
+  texts={[
+    { content: "My super title", attributes: { x: "100", y: "100", "font-size": "70px" } },
+    { content: "My super description", attributes: { x: "100", y: "200", "font-size": "40px" } },
+  ]}
+/>
 ```
 
 ## images
@@ -68,7 +72,8 @@ Example:
 ```astro
 <SocialImage
   style={".red {fill: red}"}
-  texts={[{content: "My red title", attributes={class: 'red'}}]} />
+  texts={[{content: "My red title", attributes={class: 'red'}}]}
+/>
 ```
 
 ## customSVG
@@ -95,7 +100,13 @@ Example:
 <SocialImage
   getURL
   backgroundColor="#28262c"
-  texts={[{ content: "My super title", attributes: { x: "55", y: "105", "font-size": "70px", fill: "#fefffe" } }]} />
+  texts={[
+    {
+      content: "My super title",
+      attributes: { x: "55", y: "105", "font-size": "70px", fill: "#fefffe" },
+    },
+  ]}
+/>
 ```
 
 ## globalOption

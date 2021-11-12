@@ -3,11 +3,11 @@ import { createHash } from "crypto"
 import { createRequire } from "module"
 import { resolve } from "path"
 
-// We can't import sharp normally otherwise Rollup, Snowpack, everyone will panic
+// We can't import sharp normally because it's a CJS thing and those don't seems to work well with Astro, Vite, everyone
 const cjs = createRequire(resolve("node_modules", "astro-social-images", "dist", "main.js"))
 const sharp = cjs("sharp")
 
-import base64url from "base64url"
+import { Base64Url } from "base64url-xplatform"
 
 import type { Config, GlobalConfig, Text } from "./types"
 
@@ -21,7 +21,7 @@ const defaultGlobalConfig: GlobalConfig = {
   hashLength: 7,
 }
 
-function generateImage(options: Config = {}, globalOptions: GlobalConfig = {}): string {
+export function generateImage(options: Config = {}, globalOptions: GlobalConfig = {}): string {
   // Merge with default configs
   options = { ...defaultConfig, ...options }
   globalOptions = { ...defaultGlobalConfig, ...globalOptions }
@@ -65,7 +65,7 @@ function getHash(options: Config, globalOptions: GlobalConfig) {
   hash.update(JSON.stringify(options))
   hash.update(JSON.stringify(globalOptions))
 
-  return base64url(hash.digest()).substring(0, globalOptions.hashLength || 5)
+  return Base64Url.encode(hash.digest()).substring(0, globalOptions.hashLength || 5)
 }
 
 function generateTextsMarkup(texts: Text[]): string {
@@ -107,5 +107,3 @@ function createTemplate(options: Config): string {
     </g>
 	</svg>`
 }
-
-export { generateImage, Config }

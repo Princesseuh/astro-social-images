@@ -1,14 +1,10 @@
 {
   "compilerOptions": {
+    "module": "es2020",
     "moduleResolution": "node",
     "outDir": "dist",
     "declaration": true
   },
-  "include": [
-    "src/main.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": ["src/index.ts"],
+  "exclude": ["node_modules", "dist"]
 }
