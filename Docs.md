@@ -111,7 +111,7 @@ Example:
 
 ## globalOption
 
-An object containing parameters that are not necessarily related to the current image being generated and could be shared among your images. It has the following parameters:
+An object containing parameters that are not necessarily related to the current image being generated and could be shared among your images. When used directly in Javascript, this is the second argument of `generateSocialImage`. It has the following parameters:
 
 ### outputDir
 
