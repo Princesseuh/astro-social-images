@@ -125,6 +125,49 @@ Change the length of the hash used for the urls. The default value should be eno
 
 By default `7`
 
+### urlPath
+
+This will be used to generate the final URL of your files, the Opengraph Protocol stipulate that this should be an absolute path, thus you should change this to your website URL
+
+By default `/`
+
+Example (in JS instead of the component, but it works the same way in both):
+
+```js
+generateSocialImage(
+  {
+    backgroundColor: "#28262c",
+    texts: [
+      {
+        content: "Princesseuh",
+        attributes: { x: "55", y: "105", "font-size": "70px", fill: "#fefffe" },
+      },
+    ],
+  },
+  {
+    urlPath: "https://princesseuh.dev/",
+  },
+)
+```
+
+will return the following object:
+
+```js
+{
+  path: 'public/socials/syMGCnw.png',
+  url: 'https://princesseuh.dev/socials/syMGCnw.png',
+  hash: 'syMGCnw'
+}
+```
+
+### publicDir
+
+`astro-social-images` expect you to generate your images in the `public` folder of your Astro website, what this mean is that the final URLs of the images should be relative to the root of your `dist` folder, not to a `public` folder in it (aka, `website.com/socials/xxxxx.png`, not `website.com/public/socials/xxxxx.png`)
+
+Thus `astro-social-images` needs to know the name of that folder since it's possible to change it through your Astro config (also, you might not want to generate images to a public folder at all, in which case you should set this to `undefined` or `null`)
+
+By default `public`
+
 ---
 
 In addition to this page, you can take a look at the [types.ts](./src/types.ts) file to see the attributes and properties that exists and their types. Could be useful!

@@ -1,0 +1,23 @@
+---
+import { generateImage } from "./main"
+import type { Config, GlobalConfig } from "./types"
+
+export interface Props extends Config {
+  getURL?: boolean
+  globalOptions?: GlobalConfig
+}
+
+const { getURL, images, texts, style, backgroundColor, customSVG, globalOptions } =
+  Astro.props as Props
+
+const options: Config = { images, texts, style, backgroundColor, customSVG }
+const imageResult = generateImage(options, globalOptions)
+---
+
+{getURL && imageResult.url}
+{!getURL &&
+  `
+  <meta property="og:image" content="${imageResult.url}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="${imageResult.url}">
+  `}

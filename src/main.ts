@@ -9,7 +9,7 @@ const sharp = cjs("sharp")
 
 import { Base64Url } from "base64url-xplatform"
 
-import type { Config, GlobalConfig, Text } from "./types"
+import type { Config, GlobalConfig, Text, SocialImageResult } from "./types"
 
 const defaultConfig: Config = {
   texts: [],
@@ -18,15 +18,31 @@ const defaultConfig: Config = {
 
 const defaultGlobalConfig: GlobalConfig = {
   outputDir: "public/socials",
+  urlPath: "/",
+  publicDir: "public",
   hashLength: 7,
 }
 
-export function generateImage(options: Config = {}, globalOptions: GlobalConfig = {}): string {
+export function generateImage(
+  options: Config = {},
+  globalOptions: GlobalConfig = {},
+): SocialImageResult {
   // Merge with default configs
   options = { ...defaultConfig, ...options }
   globalOptions = { ...defaultGlobalConfig, ...globalOptions }
 
   const hash = getHash(options, globalOptions)
+  let outputDirURL = globalOptions.outputDir
+
+  // If our user supplied a publicDir, let's remove it from the generated URLs
+  if (globalOptions.publicDir) {
+    outputDirURL = outputDirURL.replace(
+      globalOptions.publicDir.endsWith("/")
+        ? globalOptions.publicDir
+        : globalOptions.publicDir + "/",
+      "",
+    )
+  }
 
   // Create output dir if it doesn't exists
   if (!existsSync(globalOptions.outputDir)) {
@@ -35,7 +51,11 @@ export function generateImage(options: Config = {}, globalOptions: GlobalConfig 
 
   // If the image already exists, let's bail out
   if (existsSync(`${globalOptions.outputDir}/${hash}.png`)) {
-    return `${globalOptions.outputDir}/${hash}.png`
+    return {
+      path: `${globalOptions.outputDir}/${hash}.png`,
+      url: `${globalOptions.urlPath}${outputDirURL}/${hash}.png`,
+      hash: hash,
+    }
   }
 
   // Create template
@@ -46,8 +66,9 @@ export function generateImage(options: Config = {}, globalOptions: GlobalConfig 
     return { input: image.url, ...image.attributes }
   })
 
+  // Generate our image
   const svgBuffer = Buffer.from(template)
-  const result = sharp(svgBuffer)
+  sharp(svgBuffer)
     .resize(1200, 630)
     .composite(imageList)
     .png()
@@ -56,7 +77,11 @@ export function generateImage(options: Config = {}, globalOptions: GlobalConfig 
       return info
     })
 
-  return result.options.fileOut
+  return {
+    path: `${globalOptions.outputDir}/${hash}.png`,
+    url: `${globalOptions.urlPath}${outputDirURL}/${hash}.png`,
+    hash: hash,
+  }
 }
 
 function getHash(options: Config, globalOptions: GlobalConfig) {

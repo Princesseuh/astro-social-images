@@ -8,23 +8,15 @@ It's all local which, well, can be good or bad depending on your needs, check ou
 
 ## Installing
 
-For Astro 0.20:
-
 ```shell
 npm install astro-social-images
-```
-
-For Astro 0.21:
-
-```shell
-npm install astro-social-images@next
 ```
 
 ## Usage
 
 ```astro
 ---
-import { SocialImage } from "astro-social-images/component"
+import { SocialImage } from "astro-social-images"
 ---
 
 <SocialImage
@@ -42,27 +34,31 @@ will generate the following image:
 
 ![Image with "My super title" written in the top-left corner](./assets/screenshot.png)
 
-Alternatively, you can use it directly in Javascript in your Astro frontmatters (or any other files). The component uses this in the background so both ways are supported. When using Typescript, you'll get nice completions and types in your editor when using this, which is pretty cool
+Alternatively, you can use it directly in Javascript in your Astro frontmatters (or any other files). The component uses this in the background so both ways are supported.
+
+When using Typescript, you'll get nice completions and types in your editor when using this, which is pretty cool
 
 ```js
-import { generateSocialImage } from `astro-social-images`
+import { generateSocialImage } from "astro-social-images"
 
 generateSocialImage({
   backgroundColor: "#28262c",
   texts: [
     {
       content: "My super title",
-      attributes: { x: "55", y: "105", "font-size": "70px", fill: "#fefffe" }
-    }
-  ]
+      attributes: { x: "55", y: "105", "font-size": "70px", fill: "#fefffe" },
+    },
+  ],
 })
 ```
+
+When used through JS, it won't generate the meta tags for you. Instead, the function will return an object containing the various properties you'll need to generate it yourself
 
 You can add as many texts as you want and also images, see [the documentation](./Docs.md) for more ways to customize your images
 
 ```astro
 ---
-import { SocialImage } from "astro-social-images/component"
+import { SocialImage } from "astro-social-images"
 ---
 
 <SocialImage

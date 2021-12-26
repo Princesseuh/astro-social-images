@@ -6,6 +6,13 @@ interface Config {
   customSVG?: string
 }
 
+interface GlobalConfig {
+  outputDir?: string
+  hashLength?: number
+  publicDir?: string
+  urlPath?: string
+}
+
 interface Image {
   url: string
   attributes: {
@@ -20,9 +27,10 @@ interface Text {
   }
 }
 
-interface GlobalConfig {
-  outputDir?: string
-  hashLength?: number
+interface SocialImageResult {
+  url: string
+  path: string
+  hash: string
 }
 
-export { Config, Image, Text, GlobalConfig }
+export { Config, GlobalConfig, Image, Text, SocialImageResult }
