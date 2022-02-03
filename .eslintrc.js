@@ -11,4 +11,8 @@ module.exports = {
     "plugin:prettier/recommended",
   ],
   ignorePatterns: ["dist"],
+  rules: {
+    // We don't want to leak logging into our user's console unless it's an error
+    "no-console": ["error", { allow: ["warn", "error"] }],
+  },
 }

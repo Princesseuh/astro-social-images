@@ -1,10 +1,9 @@
 import { existsSync, mkdirSync } from "fs"
 import { createHash } from "crypto"
 import { createRequire } from "module"
-import { resolve } from "path"
 
 // We can't import sharp normally because it's a CJS thing and those don't seems to work well with Astro, Vite, everyone
-const cjs = createRequire(resolve("node_modules", "astro-social-images", "dist", "main.js"))
+const cjs = createRequire(import.meta.url)
 const sharp = cjs("sharp")
 
 import { Base64Url } from "base64url-xplatform"
@@ -28,8 +27,8 @@ export function generateImage(
   globalOptions: GlobalConfig = {},
 ): SocialImageResult {
   // Merge with default configs
-  options = { ...defaultConfig, ...options }
-  globalOptions = { ...defaultGlobalConfig, ...globalOptions }
+  options = Object.assign(defaultConfig, options)
+  globalOptions = Object.assign(defaultGlobalConfig, globalOptions)
 
   const hash = getHash(options, globalOptions)
   let outputDirURL = globalOptions.outputDir
@@ -49,7 +48,7 @@ export function generateImage(
     mkdirSync(globalOptions.outputDir, { recursive: true })
   }
 
-  // If the image already exists, let's bail out
+  // If the image already exists, let's bail out and return its info
   if (existsSync(`${globalOptions.outputDir}/${hash}.png`)) {
     return {
       path: `${globalOptions.outputDir}/${hash}.png`,

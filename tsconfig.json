@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "module": "esnext",
+    "lib": ["ESNext"],
     "moduleResolution": "node",
     "outDir": "dist",
-    "declaration": true,
-    "typeRoots": ["SocialImage.d.ts"]
+    "declaration": true
   },
   "include": ["index.ts"],
   "exclude": ["node_modules", "dist"]

@@ -10,7 +10,11 @@ export interface Props extends Config {
 const { getURL, images, texts, style, backgroundColor, customSVG, globalOptions } =
   Astro.props as Props
 
-const options: Config = { images, texts, style, backgroundColor, customSVG }
+let options: Config = { images, texts, style, backgroundColor, customSVG }
+
+// Filter out not filled props
+Object.keys(options).forEach((option) => options[option] === undefined && delete options[option])
+
 const imageResult = generateImage(options, globalOptions)
 ---
 
