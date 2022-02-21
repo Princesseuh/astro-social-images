@@ -1,6 +1,6 @@
 {
   "name": "astro-social-images",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Social images generator for Astro",
   "exports": {
     ".": "./index.ts"
