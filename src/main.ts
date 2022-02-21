@@ -6,8 +6,6 @@ import { createRequire } from "module"
 const cjs = createRequire(import.meta.url)
 const sharp = cjs("sharp")
 
-import { Base64Url } from "base64url-xplatform"
-
 import type { Config, GlobalConfig, Text, SocialImageResult } from "./types"
 
 const defaultConfig: Config = {
@@ -89,7 +87,7 @@ function getHash(options: Config, globalOptions: GlobalConfig) {
   hash.update(JSON.stringify(options))
   hash.update(JSON.stringify(globalOptions))
 
-  return Base64Url.encode(hash.digest()).substring(0, globalOptions.hashLength || 5)
+  return hash.digest("base64url").substring(0, globalOptions.hashLength || 5)
 }
 
 function generateTextsMarkup(texts: Text[]): string {
