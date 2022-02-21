@@ -1,11 +1,9 @@
 {
   "compilerOptions": {
-    "module": "esnext",
-    "lib": ["ESNext"],
     "moduleResolution": "node",
-    "outDir": "dist",
-    "declaration": true
+    "module": "ESNext",
+    "allowJs": true,
+    "noEmit": true
   },
-  "include": ["index.ts"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["index.ts", "src"]
 }

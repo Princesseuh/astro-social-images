@@ -41,8 +41,8 @@ will create this code: `<text class="red">Hello</text>`
 ```astro
 <SocialImage
   texts={[
-    { content: "My super title", attributes: { x: "100", y: "100", "font-size": "70px" } },
-    { content: "My super description", attributes: { x: "100", y: "200", "font-size": "40px" } },
+    { content: 'My super title', attributes: { x: '100', y: '100', 'font-size': '70px' } },
+    { content: 'My super description', attributes: { x: '100', y: '200', 'font-size': '40px' } },
   ]}
 />
 ```
@@ -70,10 +70,7 @@ When setting this, remember that you can't directly use a string, as the curly b
 Example:
 
 ```astro
-<SocialImage
-  style={".red {fill: red}"}
-  texts={[{content: "My red title", attributes={class: 'red'}}]}
-/>
+<SocialImage style={'.red {fill: red}'} texts={[{content: "My red title", attributes={class: 'red'}}]} />
 ```
 
 ## customSVG
@@ -102,8 +99,8 @@ Example:
   backgroundColor="#28262c"
   texts={[
     {
-      content: "My super title",
-      attributes: { x: "55", y: "105", "font-size": "70px", fill: "#fefffe" },
+      content: 'My super title',
+      attributes: { x: '55', y: '105', 'font-size': '70px', fill: '#fefffe' },
     },
   ]}
 />
@@ -136,18 +133,18 @@ Example (in JS instead of the component, but it works the same way in both):
 ```js
 generateSocialImage(
   {
-    backgroundColor: "#28262c",
+    backgroundColor: '#28262c',
     texts: [
       {
-        content: "Princesseuh",
-        attributes: { x: "55", y: "105", "font-size": "70px", fill: "#fefffe" },
+        content: 'Princesseuh',
+        attributes: { x: '55', y: '105', 'font-size': '70px', fill: '#fefffe' },
       },
     ],
   },
   {
-    urlPath: "https://princesseuh.dev/",
-  },
-)
+    urlPath: 'https://princesseuh.dev/',
+  }
+);
 ```
 
 will return the following object:

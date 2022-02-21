@@ -16,15 +16,15 @@ npm install astro-social-images
 
 ```astro
 ---
-import { SocialImage } from "astro-social-images"
+import { SocialImage } from 'astro-social-images';
 ---
 
 <SocialImage
   backgroundColor="#28262c"
   texts={[
     {
-      content: "My super title",
-      attributes: { x: "55", y: "105", "font-size": "70px", fill: "#fefffe" },
+      content: 'My super title',
+      attributes: { x: '55', y: '105', 'font-size': '70px', fill: '#fefffe' },
     },
   ]}
 />
@@ -39,17 +39,17 @@ Alternatively, you can use it directly in Javascript in your Astro frontmatters 
 When using Typescript, you'll get nice completions and types in your editor when using this, which is pretty cool
 
 ```js
-import { generateSocialImage } from "astro-social-images"
+import { generateSocialImage } from 'astro-social-images';
 
 generateSocialImage({
-  backgroundColor: "#28262c",
+  backgroundColor: '#28262c',
   texts: [
     {
-      content: "My super title",
-      attributes: { x: "55", y: "105", "font-size": "70px", fill: "#fefffe" },
+      content: 'My super title',
+      attributes: { x: '55', y: '105', 'font-size': '70px', fill: '#fefffe' },
     },
   ],
-})
+});
 ```
 
 When used through JS, it won't generate the meta tags for you. Instead, the function will return an object containing the various properties you'll need to generate it yourself
@@ -58,20 +58,20 @@ You can add as many texts as you want and also images, see [the documentation](.
 
 ```astro
 ---
-import { SocialImage } from "astro-social-images"
+import { SocialImage } from 'astro-social-images';
 ---
 
 <SocialImage
   backgroundColor="#28262c"
-  images={[{ url: "public/resized-social-card.png", attributes: { top: 375, left: 900 } }]}
+  images={[{ url: 'public/resized-social-card.png', attributes: { top: 375, left: 900 } }]}
   texts={[
     {
-      content: "Princesseuh",
-      attributes: { x: "55", y: "105", "font-size": "70px", fill: "#fefffe" },
+      content: 'Princesseuh',
+      attributes: { x: '55', y: '105', 'font-size': '70px', fill: '#fefffe' },
     },
     {
-      content: "Introducing Astro: Ship Less JavaScript",
-      attributes: { x: "50", y: "325", "font-size": "40px", fill: "#fefffe" },
+      content: 'Introducing Astro: Ship Less JavaScript',
+      attributes: { x: '50', y: '325', 'font-size': '40px', fill: '#fefffe' },
     },
   ]}
 />
