@@ -1,6 +1,6 @@
 {
   "name": "astro-social-images",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "type": "module",
   "description": "Social images generator for Astro",
   "exports": {
