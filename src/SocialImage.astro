@@ -19,9 +19,9 @@ const imageResult = generateImage(options, globalOptions)
 ---
 
 {getURL && imageResult.url}
-{!getURL &&
-  `
-  <meta property="og:image" content="${imageResult.url}">
+{!getURL && <>
+  <meta property="og:image" content={imageResult.url}>
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="${imageResult.url}">
-  `}
+  <meta name="twitter:image" content={imageResult.url}>
+	</>
+}
