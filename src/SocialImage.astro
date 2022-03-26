@@ -1,21 +1,20 @@
 ---
-import { generateImage } from "./main"
-import type { Config, GlobalConfig } from "./types"
+import { generateImage } from './main';
+import type { Config, GlobalConfig } from './types';
 
 export interface Props extends Config {
-  getURL?: boolean
-  globalOptions?: GlobalConfig
+	getURL?: boolean;
+	globalOptions?: GlobalConfig;
 }
 
-const { getURL, images, texts, style, backgroundColor, customSVG, globalOptions } =
-  Astro.props as Props
+const { getURL, images, texts, style, backgroundColor, customSVG, globalOptions } = Astro.props as Props;
 
-let options: Config = { images, texts, style, backgroundColor, customSVG }
+let options: Config = { images, texts, style, backgroundColor, customSVG };
 
 // Filter out not filled props
-Object.keys(options).forEach((option) => options[option] === undefined && delete options[option])
+Object.keys(options).forEach((option) => options[option] === undefined && delete options[option]);
 
-const imageResult = generateImage(options, globalOptions)
+const imageResult = generateImage(options, globalOptions);
 ---
 
 {getURL && imageResult.url}
