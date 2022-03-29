@@ -1,6 +1,6 @@
 {
   "name": "astro-social-images",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "type": "module",
   "description": "Social images generator for Astro",
   "exports": {
@@ -21,6 +21,7 @@
   },
   "keywords": [
     "astro",
+    "astro-component",
     "jamstack",
     "seo",
     "social",
