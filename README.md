@@ -1,5 +1,7 @@
 # astro-social-images
 
+> This project is archived. I recommend checking out alteratives such as https://github.com/delucis/astro-og-canvas instead.
+
 Add a component to generate Opengraph images to [Astro](https://astro.build/), inspired by [eleventy-plugin-social-images](https://github.com/manustays/eleventy-plugin-generate-social-images).
 
 Unlike other solutions for Astro, it generates a svg that is then converted to a .png file through `sharp`. This means no headless browser, no third-party service etc.
